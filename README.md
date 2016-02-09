@@ -1,5 +1,7 @@
 Install Sails globally
-   npm install -g sails
+
+    npm install -g sails
+    
 sails new sailpipe
 npm install -g grunt
 npm install -g grunt-cli
@@ -57,7 +59,7 @@ models: {
 To recap what we have done in the last three steps:
 1.  put the real variables in the .env file
 2.  make connection.js read from the .env file to the myMongodbServer object
-3.  for both dev and prod we make our models call the connection we just described 
+3.  for both dev and prod we make our models call the connection we just described
 
 Push config to heroku by hand or with the heroku config plugin
 
@@ -66,3 +68,7 @@ Push config to heroku by hand or with the heroku config plugin
 deploy to Heroku
 
    git push
+
+
+## Heroku Pipe line and flow
+1.  in Heroku connect you App (It will become "Prod") to your github account and repo.   "Deploy"  [screenshot1]

@@ -1,4 +1,5 @@
-npm install -g sails
+Install Sails globally
+   npm install -g sails
 sails new sailpipe
 npm install -g grunt
 npm install -g grunt-cli
@@ -7,6 +8,7 @@ sails lift
 
 
 sails generate api user
+```
 
 
 ##Heroku Specific Instructions
@@ -42,3 +44,25 @@ myMongodbServer: {
   database: process.env.MY_MONGO_db
 },
 ```
+
+add the following lines to ```config/env/production``` and config/env/development.js```.   Assuming you want to share the same mongolab connection.
+
+```
+models: {
+  connection: 'myMongodbServer'
+}
+
+```
+
+To recap what we have done in the last three steps:
+1.  put the real variables in the .env file
+2.  make connection.js read from the .env file to the myMongodbServer object
+3.  for both dev and prod we make our models call the connection we just described 
+
+Push config to heroku by hand or with the heroku config plugin
+
+    heroku config:push
+
+deploy to Heroku
+
+   git push

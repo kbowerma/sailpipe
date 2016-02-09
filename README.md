@@ -81,10 +81,9 @@ deploy to Heroku
    git push
 
 
-## Heroku Pipe line and flow
-1.  in Heroku connect you App (It will become "Prod") to your github account and repo.   "Deploy"  
-![screen shot 2016-02-09 at 4 27 17 pm](https://cloud.githubusercontent.com/assets/1180747/12933316/0f2c84c8-cf4d-11e5-8e8c-ad8f0ea9e7a0.png)
-2. Clone your local master branch to dev and push to github
+## Setting up Heroku Pipeline and flow
+
+First clone your local master branch to dev and push to github, repeat for a new branch called staging (you can call them what ever you want)
 ```
    git checkout -b dev
    git push origin dev:dev
@@ -94,7 +93,26 @@ deploy to Heroku
      git checkout -b staging
      git push origin staging:staging
   ```  
+In Heroku, "connect" you App (It will become "Prod") to your github account and repo.    From the "Deploy" tab.  
+  ![screen shot 2016-02-09 at 4 27 17 pm](https://cloud.githubusercontent.com/assets/1180747/12933316/0f2c84c8-cf4d-11e5-8e8c-ad8f0ea9e7a0.png)
 
-4. Create a new Pipeline from the Heroku dashboard   ![screen shot 2016-02-09 at 4 57 13 pm](https://cloud.githubusercontent.com/assets/1180747/12933551/5b0a99f6-cf4e-11e5-9d58-21a6f173e865.png)
-5.  Once the Pipeline is create you will need to connect it to github too just like you did for the app.
-![screen shot 2016-02-09 at 5 02 34 pm](https://cloud.githubusercontent.com/assets/1180747/12933687/05db9178-cf4f-11e5-8916-ff2834e447a3.png)  Note the upper right shows the connection to github and the prod 'stage'  Shows the commit SHA
+Create a new Pipeline from the Heroku dashboard   ![screen shot 2016-02-09 at 4 57 13 pm](https://cloud.githubusercontent.com/assets/1180747/12933551/5b0a99f6-cf4e-11e5-9d58-21a6f173e865.png)
+
+Once the Pipeline is create you will need to connect it to github too just like you did for the app.
+![screen shot 2016-02-09 at 5 02 34 pm](https://cloud.githubusercontent.com/assets/1180747/12933687/05db9178-cf4f-11e5-8916-ff2834e447a3.png)  Note the upper right shows the connection to github and the prod 'stage'  Shows the commit SHA.  Heroku calls the three columns "stages" which I find kind of confusing since one is called stage.    You will also notice that there is not a "stage" for dev.   It will come soon,  and there is a special stage called review apps.
+
+Ok Now we are set to add our new branches into our pipe line but we actually have to Fork  the Heroku app two times.   We will add the stage name to the suffix of the app for a good convention.   The easiest way to do this is using the heroku for command.
+```
+heroku fork --from sailpipe --to sailpipe-dev
+heroku fork --from sailpipe --to sailpipe-staging
+```  
+
+![screen shot 2016-02-09 at 5 25 50 pm](https://cloud.githubusercontent.com/assets/1180747/12934185/6030558e-cf52-11e5-9aa2-435fe1dfce8d.png)
+
+![screen shot 2016-02-09 at 5 27 35 pm](https://cloud.githubusercontent.com/assets/1180747/12934200/73c8e8a4-cf52-11e5-9d41-1fc1dacce252.png)
+
+We have added a staging app to the staging "stage" but we don't have it hooked up to the github branch yet.   In order to do that click on the three dots next to the staging app and select configure Automatic deploys.
+
+![screen shot 2016-02-09 at 5 30 40 pm](https://cloud.githubusercontent.com/assets/1180747/12934262/e68c0056-cf52-11e5-9a24-ecbf68fa0db3.png)
+
+and select the staging branch.  ![screen shot 2016-02-09 at 5 32 22 pm](https://cloud.githubusercontent.com/assets/1180747/12934305/33f7a1e2-cf53-11e5-8a2b-63496aa16284.png)

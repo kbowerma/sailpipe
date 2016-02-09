@@ -1,16 +1,26 @@
 Install Sails globally
 
     npm install -g sails
-    
+
+Create a new sails app and move to that directory
+```    
 sails new sailpipe
+cd sailpipe
+```
+
+Start the sails app.   Soon we will switch this method to start sails by using formen ```fg start web```
+
+    sails lift
+
+If you don't have grunt installed you may need that too.
+```
 npm install -g grunt
 npm install -g grunt-cli
-cd sailpipe
-sails lift
-
-
-sails generate api user
 ```
+
+Now lets create a model and microservice
+    sails generate api user
+
 
 
 ##Heroku Specific Instructions

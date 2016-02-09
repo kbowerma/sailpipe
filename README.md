@@ -84,3 +84,17 @@ deploy to Heroku
 ## Heroku Pipe line and flow
 1.  in Heroku connect you App (It will become "Prod") to your github account and repo.   "Deploy"  
 ![screen shot 2016-02-09 at 4 27 17 pm](https://cloud.githubusercontent.com/assets/1180747/12933316/0f2c84c8-cf4d-11e5-8e8c-ad8f0ea9e7a0.png)
+2. Clone your local master branch to dev and push to github
+```
+   git checkout -b dev
+   git push origin dev:dev
+```
+  and staging
+  ```
+     git checkout -b staging
+     git push origin staging:staging
+  ```  
+
+4. Create a new Pipeline from the Heroku dashboard   ![screen shot 2016-02-09 at 4 57 13 pm](https://cloud.githubusercontent.com/assets/1180747/12933551/5b0a99f6-cf4e-11e5-9d58-21a6f173e865.png)
+5.  Once the Pipeline is create you will need to connect it to github too just like you did for the app.
+![screen shot 2016-02-09 at 5 02 34 pm](https://cloud.githubusercontent.com/assets/1180747/12933687/05db9178-cf4f-11e5-8916-ff2834e447a3.png)  Note the upper right shows the connection to github and the prod 'stage'  Shows the commit SHA

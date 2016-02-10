@@ -1,6 +1,12 @@
 {
   "name": "sailpipe",
+<<<<<<< HEAD
   "scripts": {},
+=======
+  "description": "this is for the ",
+  "scripts": {
+  },
+>>>>>>> 53060ed5a839047d8892c8d1988845a2207a4f11
   "env": {
     "MY_MONGO_db": {
       "required": true

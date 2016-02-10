@@ -118,4 +118,19 @@ We have added a staging app to the staging "stage" but we don't have it hooked u
 and select the staging branch.  ![screen shot 2016-02-09 at 5 32 22 pm](https://cloud.githubusercontent.com/assets/1180747/12934305/33f7a1e2-cf53-11e5-8a2b-63496aa16284.png)
 
 
-Before we add the dev stage we need to enable review apps.   Click on the enable review app button and you will see a prompt to create an app json file from one of the two apps we have in the pipeline so far (we haven't added dev yet).   We need to do this because heroku is going to create new app from github pull requests.     Since the other two apps we created used the heroku fork command they also copied over the environmental variable.   This json file will set the rules to copy over the env vars  to the newly created spot apps.   Be careful,   if you have any addons you are paying for they will be copied over too and you will get charged.. ![screen shot 2016-02-09 at 5 40 59 pm](https://cloud.githubusercontent.com/assets/1180747/12934520/bc372324-cf54-11e5-8f5d-f192e70d8ec3.png)
+Before we add the dev stage we need to enable review apps.   Click on the enable review app button and you will see a prompt to create an app json file from one of the two apps we have in the pipeline so far (we haven't added dev yet).   We need to do this because heroku is going to create new app from github pull requests.     Since the other two apps we created used the heroku fork command they also copied over the environmental variable.   This json file will set the rules to copy over the env vars  to the newly created spot apps.   Be careful,   if you have any addons you are paying for they will be copied over too and you will get charged.. ![screen shot 2016-02-09 at 5 40 59 pm](https://cloud.githubusercontent.com/assets/1180747/12934520/bc372324-cf54-11e5-8f5d-f192e70d8ec3.png)  You will be taken to another page that will allow you to set those rules 9amoungst other things)
+![screen shot 2016-02-09 at 5 46 42 pm](https://cloud.githubusercontent.com/assets/1180747/12934587/4e8e2e02-cf55-11e5-9558-029dc13da06c.png)
+
+Ok we are now configured to create a Review App.   I am going to trick github and just push master to a new branch called kyle the do a pull request on that one.   
+```
+git push github master:kyle
+```
+I create a pull request in the gihub UI
+
+![screen shot 2016-02-09 at 5 55 15 pm](https://cloud.githubusercontent.com/assets/1180747/12934723/52e1b798-cf56-11e5-9880-e189dbfcab52.png)
+
+And Presto!   There it is in my pipeline.   
+
+![screen shot 2016-02-09 at 5 56 53 pm](https://cloud.githubusercontent.com/assets/1180747/12934749/8fbf79d4-cf56-11e5-8cc7-05317999cc50.png)
+
+I am going to click the button to create it.   But first I have to grab that app.json file created and attach it to my branch 'kyle' 

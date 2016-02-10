@@ -1,0 +1,29 @@
+{
+  "name": "sailpipe",
+  "scripts": {},
+  "env": {
+    "MY_MONGO_db": {
+      "required": true
+    },
+    "MY_MONGO_HOST": {
+      "required": true
+    },
+    "MY_MONGO_PASSWD": {
+      "required": true
+    },
+    "MY_MONGO_PORT": {
+      "required": true
+    },
+    "MY_MONGO_USER": {
+      "required": true
+    }
+  },
+  "addons": [
+    "papertrail"
+  ],
+  "buildpacks": [
+    {
+      "url": "urn:buildpack:heroku/nodejs"
+    }
+  ]
+}
